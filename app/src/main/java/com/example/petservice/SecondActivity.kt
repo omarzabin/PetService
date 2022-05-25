@@ -1,6 +1,7 @@
 package com.example.petservice
 
 import android.os.Bundle
+import android.view.Menu
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -19,6 +20,12 @@ class SecondActivity : AppCompatActivity() {
             text = message
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater=menuInflater
+        inflater.inflate(R.menu.my_fidst_menu,menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
 }
