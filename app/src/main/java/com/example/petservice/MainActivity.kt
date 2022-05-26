@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         val nameET : EditText = findViewById(R.id.nameET)
         val emailET : EditText = findViewById(R.id.emailET)
         val phoneEt : EditText = findViewById(R.id.phoneET)
+        val dateET:EditText=findViewById(R.id.dateET)
 
 
         val btnSendMsgToNextActivity: Button = findViewById(R.id.confirmBT)
@@ -64,11 +65,12 @@ class MainActivity : AppCompatActivity() {
         var cv = ContentValues()
 
         btnSendMsgToNextActivity.setOnClickListener {
-           /* var cv = ContentValues()
+          var cv = ContentValues()
 
-            cv.put(CustomerProvider.Name,nameET.text.toString())
+            /*cv.put(CustomerProvider.Name,nameET.text.toString())
             cv.put(CustomerProvider.Phone,phoneEt.text.toString())
             cv.put(CustomerProvider.Email,emailET.text.toString())
+           // cv.put(CustomerProvider.Date,dateET.text.toString())
             contentResolver.insert(CustomerProvider.CONTENT_URI,cv)*/
 
             val message: String = "Confirmation message sent to: " + phoneEt.text.toString()

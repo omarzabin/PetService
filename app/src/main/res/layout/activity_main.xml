@@ -171,7 +171,7 @@
         app:layout_constraintVertical_bias="0.427" />
 
     <EditText
-        android:id="@+id/editTextDate2"
+        android:id="@+id/dateET"
         android:layout_width="200dp"
         android:layout_height="36dp"
         android:ems="10"

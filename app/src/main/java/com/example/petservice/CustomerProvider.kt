@@ -11,6 +11,7 @@ import android.net.Uri
 
 class CustomerProvider: ContentProvider() {
     companion object{
+
         val PROVIDER_NAME = "com.example.petservice.CustomerProvider"
         val URL = "content://$PROVIDER_NAME/CUSTOMER"
         val CONTENT_URI = Uri.parse(URL)
