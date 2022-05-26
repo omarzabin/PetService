@@ -3,14 +3,11 @@ import android.app.Notification.EXTRA_NOTIFICATION_ID
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.BroadcastReceiver
-import android.content.Context
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import android.content.Intent
-import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Build
 import android.widget.Button
@@ -23,15 +20,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val button: Button = findViewById(R.id.ResultButton)
+
+        val nameET : EditText = findViewById(R.id.nameET)
+        val emailET : EditText = findViewById(R.id.emailET)
+        val phoneEt : EditText = findViewById(R.id.phoneET)
+
+
+        val btnSendMsgToNextActivity: Button = findViewById(R.id.confirmBT)
+        val resultBT: Button = findViewById(R.id.resultBT)
         val resultTV: TextView = findViewById(R.id.TextResult)
+
+
 
         var flag: String = "Check-up"
         val spinnerVal: Spinner = findViewById(R.id.spinner1)
         var options = arrayOf("Check-up", "Vaccine", "Dental cleaning", "Bath Services")
         spinnerVal.adapter =
             ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options)
-        button.setOnClickListener { view ->
+        resultBT.setOnClickListener { view ->
             if (flag == "Check-up")
                 resultTV.text = 50.toString();
             if (flag == "Vaccine")
@@ -50,19 +56,31 @@ class MainActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         }
-        val UserMessage: EditText = findViewById(R.id.editTextPhone)
-        val btnSendMsgToNextActivity: Button = findViewById(R.id.Price)
+
+
+
+
+        // insert data to database
+        var cv = ContentValues()
+
         btnSendMsgToNextActivity.setOnClickListener {
-            val message: String = "Confirmation message sent to: " + UserMessage.text.toString()
+           /* var cv = ContentValues()
+
+            cv.put(CustomerProvider.Name,nameET.text.toString())
+            cv.put(CustomerProvider.Phone,phoneEt.text.toString())
+            cv.put(CustomerProvider.Email,emailET.text.toString())
+            contentResolver.insert(CustomerProvider.CONTENT_URI,cv)*/
+
+            val message: String = "Confirmation message sent to: " + phoneEt.text.toString()
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("key", message)
             startActivity(intent)
         }
 
         createNotificationChannel()
-        val btnShowNotification: Button = findViewById(R.id.ResultButton)
 
-        btnShowNotification.setOnClickListener {
+
+        resultBT.setOnClickListener {
             basicNotification()
         }
 

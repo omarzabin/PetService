@@ -1,16 +1,21 @@
 package com.example.petservice
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 import android.widget.*
 
 class SecondActivity : AppCompatActivity() {
+    var profileFrag = ProfileFragment()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
+
 
 
         val message = intent.getStringExtra("key")
@@ -27,5 +32,14 @@ class SecondActivity : AppCompatActivity() {
         inflater.inflate(R.menu.my_fidst_menu,menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.profileItem->profileFrag.show(supportFragmentManager,"profile")
+            R.id.placeIteam -> startActivity(Intent(this, MainActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
 }
