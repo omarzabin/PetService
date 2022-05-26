@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/profileItem"
-        android:title="Profile"
+        android:id="@+id/orderItem"
+        android:title="Order"
         app:showAsAction="never"/>
     <item
         android:id="@+id/placeIteam"

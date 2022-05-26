@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.*
 
 class SecondActivity : AppCompatActivity() {
-    var profileFrag = ProfileFragment()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +35,9 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.profileItem->profileFrag.show(supportFragmentManager,"profile")
+            R.id.orderItem->startActivity(Intent(this, OrderActivity::class.java))
             R.id.placeIteam -> startActivity(Intent(this, MainActivity::class.java))
+            R.id.aboutUsItem-> startActivity(Intent(this,AboutUsActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }
