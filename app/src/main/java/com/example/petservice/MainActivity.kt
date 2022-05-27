@@ -75,8 +75,9 @@ class MainActivity : AppCompatActivity() {
               startActivity(intent)
 
 
-            createNotificationChannel()
+
         }
+        createNotificationChannel()
 
         resultBT.setOnClickListener {
             basicNotification()

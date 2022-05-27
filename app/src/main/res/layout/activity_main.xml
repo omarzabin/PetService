@@ -176,7 +176,7 @@
         android:layout_height="36dp"
         android:ems="10"
         android:hint="00/00/0000"
-        android:inputType="date"
+        android:inputType="date|text"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
