@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class MyHelper (context: Context?): SQLiteOpenHelper(context,"CUSTOMER",null,1){
     override fun onCreate(dp: SQLiteDatabase?) {
-        dp?.execSQL("CREATE TABLE CUSTOMER (_Id INTEGER PRIMARY KEY,Name TEXT,Phone INTEGER,Email TEXT )")
+        dp?.execSQL("CREATE TABLE CUSTOMER (_Id INTEGER PRIMARY KEY,Name TEXT,Phone INTEGER,Email TEXT,Date TEXT )")
 
     }
 

@@ -1,4 +1,5 @@
 package com.example.petservice
+
 import android.app.Notification.EXTRA_NOTIFICATION_ID
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -21,16 +22,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val nameET : EditText = findViewById(R.id.nameET)
-        val emailET : EditText = findViewById(R.id.emailET)
-        val phoneEt : EditText = findViewById(R.id.phoneET)
-        val dateET:EditText=findViewById(R.id.dateET)
+        val nameET: EditText = findViewById(R.id.nameET)
+        val emailET: EditText = findViewById(R.id.emailET)
+        val phoneEt: EditText = findViewById(R.id.phoneET)
+        val dateET: EditText = findViewById(R.id.dateET)
 
 
         val btnSendMsgToNextActivity: Button = findViewById(R.id.confirmBT)
         val resultBT: Button = findViewById(R.id.resultBT)
         val resultTV: TextView = findViewById(R.id.TextResult)
-
 
 
         var flag: String = "Check-up"
@@ -59,37 +59,34 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
         // insert data to database
-        var cv = ContentValues()
-
         btnSendMsgToNextActivity.setOnClickListener {
-          var cv = ContentValues()
+            var cv = ContentValues()
 
-            /*cv.put(CustomerProvider.Name,nameET.text.toString())
-            cv.put(CustomerProvider.Phone,phoneEt.text.toString())
-            cv.put(CustomerProvider.Email,emailET.text.toString())
-           // cv.put(CustomerProvider.Date,dateET.text.toString())
-            contentResolver.insert(CustomerProvider.CONTENT_URI,cv)*/
+              cv.put(CustomerProvider.Name,nameET.text.toString())
+              cv.put(CustomerProvider.Phone,phoneEt.text.toString())
+              cv.put(CustomerProvider.Email,emailET.text.toString())
+              cv.put(CustomerProvider.Date,dateET.text.toString())
+              contentResolver.insert(CustomerProvider.CONTENT_URI,cv)
 
-            val message: String = "Confirmation message sent to: " + phoneEt.text.toString()
-            val intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("key", message)
-            startActivity(intent)
+              val message: String = "Confirmation message sent to: " + phoneEt.text.toString()
+              val intent = Intent(this, SecondActivity::class.java)
+              intent.putExtra("key", message)
+              startActivity(intent)
+
+
+            createNotificationChannel()
         }
-
-        createNotificationChannel()
-
 
         resultBT.setOnClickListener {
             basicNotification()
         }
 
     }
+
     private var notificationId1: Int = 123
     private var notificationId2: Int = 234
-    private var notificationId3 :Int = 345
+    private var notificationId3: Int = 345
     private val channelId = "App_Channel.testNotification"
     private val description = "Trying to test different types notification"
     private fun basicNotification() {

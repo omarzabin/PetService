@@ -20,6 +20,7 @@ class CustomerProvider: ContentProvider() {
         val Name = "name"
         val Phone ="phone"
         val Email= "email"
+        val Date = "date"
 
         lateinit var db:SQLiteDatabase
     }
