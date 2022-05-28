@@ -26,6 +26,7 @@ class OrderActivity : AppCompatActivity() {
         val deleteBT: Button = findViewById(R.id.deleteBT)
 
         // select data from database
+
         var rs = contentResolver.query(
             CustomerProvider.CONTENT_URI,
             arrayOf(
