@@ -63,24 +63,24 @@ class MainActivity : AppCompatActivity() {
         btnSendMsgToNextActivity.setOnClickListener {
             var cv = ContentValues()
 
-              cv.put(CustomerProvider.Name,nameET.text.toString())
-              cv.put(CustomerProvider.Phone,phoneEt.text.toString())
-              cv.put(CustomerProvider.Email,emailET.text.toString())
-              cv.put(CustomerProvider.Date,dateET.text.toString())
-              contentResolver.insert(CustomerProvider.CONTENT_URI,cv)
+            cv.put(CustomerProvider.Name, nameET.text.toString())
+            cv.put(CustomerProvider.Phone, phoneEt.text.toString())
+            cv.put(CustomerProvider.Email, emailET.text.toString())
+            cv.put(CustomerProvider.Date, dateET.text.toString())
+            contentResolver.insert(CustomerProvider.CONTENT_URI, cv)
 
-              val message: String = "Confirmation message sent to: " + phoneEt.text.toString()
-              val intent = Intent(this, SecondActivity::class.java)
-              intent.putExtra("key", message)
-              startActivity(intent)
-
+            val message: String = "Confirmation message sent to: " + phoneEt.text.toString()
+            val intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("key", message)
+            basicNotification()
+            startActivity(intent)
 
 
         }
         createNotificationChannel()
 
         resultBT.setOnClickListener {
-            basicNotification()
+            // add total TextView
         }
 
     }
@@ -102,52 +102,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-/*private fun pendingNotification() {
-val intent = Intent(this, MainActivity::class.java).apply {
-flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-}
-val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
-val builder = NotificationCompat.Builder(this, channelId)
-.setSmallIcon(R.mipmap.ic_launcher)
-.setContentTitle("My notification")
-.setContentText("Hello World!")
-.setPriority(NotificationCompat.PRIORITY_DEFAULT)
-.setContentIntent(pendingIntent)
-.setAutoCancel(true)
-with(NotificationManagerCompat.from(this)) {
-notify(notificationId2, builder.build())
-}
-}
-*/
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun actionsNotification() {
-        val snoozeIntent = Intent(this, MainActivity::class.java).apply {
-            action = "snooze"
-            putExtra(EXTRA_NOTIFICATION_ID, 0)
-        }
-        val snoozePendingIntent: PendingIntent =
-            PendingIntent.getBroadcast(this, 0, snoozeIntent, 0)
-        val builder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("My notification")
-            .setContentText("Hello World!")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(snoozePendingIntent)
-            .addAction(
-                R.drawable.ic_launcher_background, "Snooze",
-                snoozePendingIntent
-            )
-        with(NotificationManagerCompat.from(this)) {
-            notify(notificationId2, builder.build())
-        }
-        val br: BroadcastReceiver = AfterNotification()
-        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION).apply {
-            addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
-        }
-//registerReceiver(br, filter)
-    }
-
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "test_notification"
