@@ -18,9 +18,10 @@ class OrderActivity : AppCompatActivity() {
         val emailET2: EditText = findViewById(R.id.emailET2)
         val dateET2: EditText = findViewById(R.id.dateET2)
 
-        val idTV:TextView =findViewById(R.id.idTV)
+        val idTV: TextView = findViewById(R.id.idTV)
 
         val nextBT: Button = findViewById(R.id.nextBT)
+        val preBT: Button = findViewById(R.id.preBT)
         val updateBT: Button = findViewById(R.id.updateBT)
         val deleteBT: Button = findViewById(R.id.deleteBT)
 
@@ -33,17 +34,25 @@ class OrderActivity : AppCompatActivity() {
                 CustomerProvider.Email,
                 CustomerProvider.Phone,
                 CustomerProvider.Date
-            ), null, null, "NAME"
+            ), null, null
         )
         nextBT.setOnClickListener {
             if (rs?.moveToNext()!!) {
                 idTV.text = rs.getString(0)
                 nameET2.setText(rs.getString(1))
-                phoneET2.setText(rs.getString(2))
-                emailET2.setText(rs.getString(3))
+                phoneET2.setText(rs.getString(3))
+                emailET2.setText(rs.getString(2))
                 dateET2.setText((rs.getString(4)))
             }
-
+        }
+        preBT.setOnClickListener {
+            if (rs?.moveToPrevious()!!) {
+                idTV.text = rs.getString(0)
+                nameET2.setText(rs.getString(1))
+                phoneET2.setText(rs.getString(3))
+                emailET2.setText(rs.getString(2))
+                dateET2.setText((rs.getString(4)))
+            }
         }
         //update database
         updateBT.setOnClickListener {
@@ -56,7 +65,6 @@ class OrderActivity : AppCompatActivity() {
                 CustomerProvider.CONTENT_URI, cv, "_Id =?",
                 arrayOf(idTV.text.toString())
             )
-
             rs?.requery()
 
 

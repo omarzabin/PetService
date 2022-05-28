@@ -37,7 +37,8 @@ class SecondActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.orderItem->startActivity(Intent(this, OrderActivity::class.java))
             R.id.placeIteam -> startActivity(Intent(this, MainActivity::class.java))
-           // R.id.aboutUsItem-> startActivity(Intent(this,AboutUsActivity::class.java))
+            R.id.aboutUsItem-> startActivity(Intent(this,AboutUsActivity::class.java))
+
         }
         return super.onOptionsItemSelected(item)
     }
