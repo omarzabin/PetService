@@ -45,13 +45,13 @@ class MainActivity : AppCompatActivity() {
 
                 resultBT.setOnClickListener { view ->
                     if (flag == "Check-up")
-                        resultTV.text = 50.toString()
+                        resultTV.text ="total is "+ 50.toString()
                     else if (flag == "Vaccine")
-                        resultTV.text = 15.toString()
+                        resultTV.text ="total is "+ 15.toString()
                     else if (flag == "Dental cleaning")
-                        resultTV.text = 70.toString()
+                        resultTV.text = "total is "+70.toString()
                     else if (flag == "Bath Services")
-                        resultTV.text = 10.toString()
+                        resultTV.text = "total is "+10.toString()
                    // Toast.makeText(this,"Test",Toast.LENGTH_LONG).show()
                 }
 
