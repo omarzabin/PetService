@@ -1,6 +1,7 @@
 package com.example.petservice
 
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -78,7 +79,8 @@ class OrderActivity : AppCompatActivity() {
                 "_Id =?",
                 arrayOf(idTV.text.toString())
             )
-            rs?.requery()
+            startActivity(Intent(this, OrderActivity::class.java))
+            //rs?.requery()
 
         }
 

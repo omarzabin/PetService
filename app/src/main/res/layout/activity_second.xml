@@ -20,7 +20,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:textAlignment="center"
-            android:textColor="#494FBF"
+            android:textColor="#005E70"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/checkbox_on_background" />
+            app:srcCompat="@drawable/icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

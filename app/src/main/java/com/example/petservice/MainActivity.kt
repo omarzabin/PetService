@@ -41,11 +41,11 @@ class MainActivity : AppCompatActivity() {
         resultBT.setOnClickListener { view ->
             if (flag == "Check-up")
                 resultTV.text = 50.toString();
-            if (flag == "Vaccine")
+            else if (flag == "Vaccine")
                 resultTV.text = 15.toString();
-            if (flag == "Dental cleaning")
+            else if (flag == "Dental cleaning")
                 resultTV.text = 70.toString();
-            if (flag == "Bath Services")
+            else if (flag == "Bath Services")
                 resultTV.text = 10.toString();
         }
         spinnerVal.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
+
             }
         }
 
