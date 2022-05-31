@@ -67,7 +67,10 @@ class OrderActivity : AppCompatActivity() {
                 CustomerProvider.CONTENT_URI, cv, "_Id =?",
                 arrayOf(idTV.text.toString())
             )
+
             rs?.requery()
+            startActivity(Intent(this, OrderActivity::class.java))
+
 
 
         }
